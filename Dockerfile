@@ -1,18 +1,18 @@
-# Use Python 3.10
+# Use Python 3.10 instead of Render default (3.13)
 FROM python:3.10-slim
 
-# Set working directory
+# Set working directory inside container
 WORKDIR /app
 
-# Copy files
+# Copy all files
 COPY . /app
 
-# Install dependencies
-RUN pip install --upgrade pip
+# Upgrade pip and install all dependencies
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r requirements.txt
 
-# Expose port
+# Expose port for Render
 EXPOSE 10000
 
-# Run your Flask app
+# Command to start your Flask app
 CMD ["python", "app.py"]
