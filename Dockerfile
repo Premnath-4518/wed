@@ -1,18 +1,18 @@
-# Use Python 3.10 instead of Render default (3.13)
+# Use Python 3.10 (TensorFlow compatible)
 FROM python:3.10-slim
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Copy all files
+# Copy project files
 COPY . /app
 
-# Upgrade pip and install all dependencies
+# Install dependencies
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r requirements.txt
 
-# Expose port for Render
+# Expose Render port
 EXPOSE 10000
 
-# Command to start your Flask app
+# Start Flask app
 CMD ["python", "app.py"]
